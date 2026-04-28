@@ -97,5 +97,20 @@ Train Final Model (YOLOv8m-OBB)
 ↓
 Deploy on Jetson Nano
 
+##  Paper
 
+Journal paper currently in preparation.
+Supervised by **Dr. Sachin Kansal**
 
+---
+
+##  Author
+
+**Kashish Goyal**
+2nd Year CSE Undergraduate
+- LinkedIn: linkedin.com/in/kashishgoyal111
+- LeetCode: leetcode.com/u/kashish1111
+- GitHub: github.com/kaashish1111
+
+---
+⭐  Star this repo if you find it useful!
