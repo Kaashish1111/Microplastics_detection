@@ -79,7 +79,23 @@ This project proposes a fully integrated, low-cost alternative:
 ---
 
 ## Pipeline
-
+Hardware Setup
+↓
+Image Capture (UV fluorescence)
+↓
+Manual Annotation (Label Studio — OBB)
+↓
+Dataset Export (YOLOv8 OBB format)
+↓
+Train Rough Model (YOLOv8n-OBB)
+↓
+Auto-annotation of remaining images
+↓
+Verify + Clean dataset
+↓
+Train Final Model (YOLOv8m-OBB)
+↓
+Deploy on Jetson Nano
 
 
 
