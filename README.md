@@ -1,4 +1,4 @@
-# 🔬 UV Fluorescence Microplastics Detection
+# UV Fluorescence Microplastics Detection
 
 > A cost-effective, dye-free microplastics detection system combining 
 > UV-induced fluorescence imaging with YOLOv8 OBB deep learning — 
