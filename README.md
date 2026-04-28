@@ -74,11 +74,12 @@ This project proposes a fully integrated, low-cost alternative:
 
 > Note: Results on initial 140-image subset. 
 > Final model training on full 1850-image dataset in progress.
+> <img width="533" height="232" alt="image" src="https://github.com/user-attachments/assets/3590b8c5-aaf4-41da-8188-74f0f44e0ba6" />
 
 ---
 
 ## Pipeline
 
-<img width="533" height="232" alt="image" src="https://github.com/user-attachments/assets/3590b8c5-aaf4-41da-8188-74f0f44e0ba6" />
+
 
 
