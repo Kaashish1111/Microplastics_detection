@@ -7,7 +7,7 @@ predict_folders = {
     'runs/obb/predict-7': 'plastic_2mm',
     'runs/obb/predict-8': 'plastic_3mm',
     'runs/obb/predict-9': 'plastic_4mm',
-    'runs/obb/predict-': 'plastic_5mm',
+    'runs/obb/predict-10': 'plastic_5mm',
 }
 
 output_file = 'label_studio_import.json'
@@ -36,7 +36,7 @@ for predict_dir, class_name in predict_folders.items():
 
         task = {
             "data": {
-                "image": f"/data/local-files/?d=/Users/coder_kashish/Downloads/microPlastics_detection/{predict_dir}/{img_file}"
+                "image": f"https://overexert-buccaneer-bootleg.ngrok-free.dev/{predict_dir}/{img_file}"
             },
             "predictions": []
         }
