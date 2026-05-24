@@ -9,24 +9,22 @@ USERNAME = "Kaashish1111"
 REPO = "Microplastics_detection"
 
 # ==========================================
-# LOCAL FOLDER PATH
+# LOCAL PATH
 # ==========================================
 
-# Your folders:
-# runs/obb/predict-6
-# runs/obb/predict-7
-# etc.
+# Your actual local folders are inside:
+# microPlastics_detection/runs/obb/
 
-LOCAL_BASE_PATH = "runs/obb"
+LOCAL_BASE_PATH = "microPlastics_detection/runs/obb"
 
 # ==========================================
 # GITHUB PATH
 # ==========================================
 
-# GitHub repo structure:
-# runs/obb/predict-6/image_1.jpg
+# Your GitHub repo path is:
+# microPlastics_detection/runs/obb/predict-6/image_01.jpg
 
-BASE_GITHUB_PATH = "runs/obb"
+BASE_GITHUB_PATH = "microPlastics_detection/runs/obb"
 
 # ==========================================
 # FOLDERS TO INCLUDE
@@ -71,7 +69,7 @@ for folder in FOLDERS:
         if img.lower().endswith((".jpg", ".jpeg", ".png")):
 
             # ==========================================
-            # CREATE RAW GITHUB IMAGE URL
+            # CREATE RAW GITHUB URL
             # ==========================================
 
             image_url = (
@@ -81,7 +79,7 @@ for folder in FOLDERS:
             )
 
             # ==========================================
-            # CREATE LABEL STUDIO TASK
+            # LABEL STUDIO TASK
             # ==========================================
 
             task = {
@@ -90,7 +88,7 @@ for folder in FOLDERS:
                     "group": folder
                 },
 
-                # Placeholder for semi-auto predictions
+                # Placeholder predictions
                 "predictions": [
                     {
                         "model_version": "microplastics-v1",
@@ -104,7 +102,7 @@ for folder in FOLDERS:
             print(f"Added: {img}")
 
 # ==========================================
-# SAVE JSON FILE
+# SAVE JSON
 # ==========================================
 
 with open(OUTPUT_JSON, "w") as f:
