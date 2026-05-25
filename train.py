@@ -9,5 +9,5 @@ model.train(
     epochs=100,
     imgsz=640,
     batch=8,
-    device="cpu"
+    device="mps"
 )
