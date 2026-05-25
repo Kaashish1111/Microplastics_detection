@@ -26,11 +26,11 @@ FOLDERS = [
 OUTPUT_JSON = "labelstudio_tasks.json"
 
 # ==========================================
-# LABEL NAME
+# LABEL
 # ==========================================
 
 CLASS_MAP = {
-    0: "Microplastic"
+    0: "plastic"
 }
 
 # ==========================================
@@ -93,23 +93,28 @@ for folder in FOLDERS:
 
                     parts = line.strip().split()
 
-                    # ==========================================
-                    # YOLO OBB FORMAT
-                    # class x1 y1 x2 y2 x3 y3 x4 y4
-                    # ==========================================
-
                     cls = int(parts[0])
 
                     coords = list(map(float, parts[1:]))
 
-                    points = []
+                    xs = coords[0::2]
+                    ys = coords[1::2]
 
-                    for i in range(0, len(coords), 2):
+                    # ==========================================
+                    # CONVERT POLYGON TO RECTANGLE
+                    # ==========================================
 
-                        x = coords[i] * 100
-                        y = coords[i + 1] * 100
+                    min_x = min(xs)
+                    max_x = max(xs)
 
-                        points.append([x, y])
+                    min_y = min(ys)
+                    max_y = max(ys)
+
+                    x = min_x * 100
+                    y = min_y * 100
+
+                    width = (max_x - min_x) * 100
+                    height = (max_y - min_y) * 100
 
                     result = {
                         "original_width": img_width,
@@ -117,13 +122,17 @@ for folder in FOLDERS:
                         "image_rotation": 0,
 
                         "value": {
-                            "points": points,
-                            "polygonlabels": [CLASS_MAP[cls]]
+                            "x": x,
+                            "y": y,
+                            "width": width,
+                            "height": height,
+                            "rotation": 0,
+                            "rectanglelabels": [CLASS_MAP[cls]]
                         },
 
                         "from_name": "label",
                         "to_name": "image",
-                        "type": "polygonlabels"
+                        "type": "rectanglelabels"
                     }
 
                     results.append(result)
