@@ -1,7 +1,7 @@
 task: obb
 mode: train
 model: yolov8n-obb.pt
-data: data2.yaml
+data: data.yaml
 epochs: 100
 time: null
 patience: 10
