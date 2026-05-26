@@ -33,17 +33,17 @@ The framework enables real-time localization of microplastic particles in contro
 
 ---
 
-## Key Features
+# Key Features
 
->✅ UV fluorescence-based microplastic visualization
->✅ Dye-free detection pipeline
->✅ Custom-built optical imaging chamber
->✅ YOLOv8 Oriented Bounding Box (OBB) detection
->✅ Explainable AI using EigenCAM / Grad-CAM
->✅ Leakage-resistant dataset engineering
->✅ Similarity-aware dataset splitting
->✅ Real-time inference on Jetson Nano
->✅ Low-cost and portable design
+- ✅ UV fluorescence-based microplastic visualization
+- ✅ Dye-free detection pipeline
+- ✅ Custom-built optical imaging chamber
+- ✅ YOLOv8 Oriented Bounding Box (OBB) detection
+- ✅ Explainable AI using EigenCAM / Grad-CAM
+- ✅ Leakage-resistant dataset engineering
+- ✅ Similarity-aware dataset splitting
+- ✅ Real-time inference on Jetson Nano
+- ✅ Low-cost and portable design
 
 ---
 
@@ -115,42 +115,42 @@ Activation maps demonstrated that the model primarily focuses on UV-fluorescent 
 ---
 
 ## Pipeline
->Custom UV Optical Setup
->       ↓
->UV Fluorescence Image Capture
->       ↓
->Image Acquisition using Jetson Nano
->      ↓
->Manual Annotation (Label Studio - OBB)
->       ↓
->Dataset Cleaning & Similarity Analysis
->       ↓
->Leakage-Resistant Dataset Splitting
->       ↓
->YOLOv8n-OBB Training
->       ↓
->Explainability Analysis (EigenCAM)
->       ↓
->Edge Deployment on Jetson Nano
->       ↓
->Real-Time Microplastic Detection
+
+```mermaid
+flowchart TD
+
+A[Custom UV Optical Setup]
+--> B[UV Fluorescence Image Capture]
+--> C[Image Acquisition using Jetson Nano]
+--> D[Manual Annotation - Label Studio OBB]
+--> E[Dataset Cleaning and Similarity Analysis]
+--> F[Leakage-Resistant Dataset Splitting]
+--> G[YOLOv8n-OBB Training]
+--> H[Validation and Performance Evaluation]
+--> I[Explainability Analysis - EigenCAM]
+--> J[Edge Deployment on Jetson Nano]
+--> K[Real-Time Microplastic Detection]
+```
 
 ---
-## Current Status
-Completed
+# Current Status
 
-✅ UV fluorescence imaging setup
-✅ Custom dataset creation
-✅ YOLOv8 OBB detection
-✅ Leakage-resistant evaluation
-✅ Explainable AI integration
-✅ Edge deployment pipeline
+## Completed
 
-In Progress
+- ✅ UV fluorescence imaging setup
+- ✅ Custom dataset creation
+- ✅ YOLOv8 OBB detection
+- ✅ Leakage-resistant evaluation
+- ✅ Explainable AI integration
+- ✅ Edge deployment pipeline
 
-🚧 Multi-class size classification (1mm–5mm)
-🚧 Automated particle size estimation
-🚧 Real-world environmental testing
+---
+
+## In Progress
+
+- 🚧 Multi-class size classification (1mm–5mm)
+- 🚧 Automated particle size estimation
+- 🚧 Real-world environmental testing
 
 ---
 
