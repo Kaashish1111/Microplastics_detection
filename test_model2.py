@@ -15,7 +15,7 @@ print("===================================")
 # =========================================
 
 metrics = model.val(
-    data="data.yaml",
+    data="data2.yaml",
     split="test"
 )
 
@@ -30,7 +30,7 @@ print(metrics)
 # =========================================
 
 results = model.predict(
-    source="dataset/images/test",
+    source="dataset2/images/test",
     save=True,
     conf=0.25
 )
