@@ -1,23 +1,22 @@
 # UV Fluorescence Microplastics Detection
 
-> A cost-effective, dye-free microplastics detection system combining 
-> UV-induced fluorescence imaging with YOLOv8 OBB deep learning 
-> designed for field deployment on edge hardware.
+>A low-cost, portable, and explainable AI framework for real-time microplastic detection using UV-induced fluorescence imaging and YOLOv8 Oriented Bounding Box (OBB) detection, designed for deployment on NVIDIA Jetson Nano edge hardware.
 
 ---
 
 ##  Overview
 
-Microplastic contamination in water is a critical environmental and 
-public health challenge. Existing detection methods (FTIR, Raman 
-Spectroscopy, Nile Red staining) are expensive, lab-dependent, and 
-require chemical reagents.
+Microplastic pollution in aquatic ecosystems has become a major environmental and public health challenge. Traditional laboratory techniques such as FTIR spectroscopy, Raman spectroscopy, and chemical staining methods provide high analytical accuracy but require expensive instrumentation, laboratory infrastructure, expert operation, and extensive sample preparation.
 
-This project proposes a fully integrated, low-cost alternative:
-- **UV-induced natural fluorescence** — no chemical dyes needed
-- **Custom hardware pipeline** — portable and field-deployable
-- **YOLOv8 OBB** — deep learning with oriented bounding boxes
-- **Edge computing** — runs on Jetson Nano
+This project proposes a low-cost and field-deployable alternative that combines:
+
+UV-induced natural fluorescence imaging
+Cross-polarized optical imaging
+Deep learning-based oriented object detection
+Explainable AI (XAI)
+Edge AI deployment
+
+The framework enables real-time localization of microplastic particles in controlled microscopy environments without requiring chemical dyes or staining procedures.
 
 ---
 
@@ -34,6 +33,20 @@ This project proposes a fully integrated, low-cost alternative:
 
 ---
 
+## Key Features
+
+✅ UV fluorescence-based microplastic visualization
+✅ Dye-free detection pipeline
+✅ Custom-built optical imaging chamber
+✅ YOLOv8 Oriented Bounding Box (OBB) detection
+✅ Explainable AI using EigenCAM / Grad-CAM
+✅ Leakage-resistant dataset engineering
+✅ Similarity-aware dataset splitting
+✅ Real-time inference on Jetson Nano
+✅ Low-cost and portable design
+
+---
+
 ##  Dataset
 
 | Property | Details |
@@ -47,55 +60,99 @@ This project proposes a fully integrated, low-cost alternative:
 
 >  This dataset does not exist anywhere else. 
 > It was designed, collected, and annotated specifically for this research.
-
+> To improve scientific reliability, perceptual hash-based similarity analysis was used to reduce duplicate leakage between train, validation, and test splits.
 ---
 
 ##  Model
 
-| Property | Details |
-|----------|---------|
-| Architecture | YOLOv8n-OBB |
-| Training Images | 140 (initial subset) |
-| Epochs | 50 |
-| Image Size | 640×640 |
-| Hardware | MacBook → Jetson Nano |
+| Property          | Details                         |
+| ----------------- | ------------------------------- |
+| Architecture      | YOLOv8n-OBB                     |
+| Detection Type    | Oriented Bounding Box Detection |
+| Input Resolution  | 640 × 640                       |
+| Framework         | Ultralytics YOLOv8              |
+| Training Hardware | Apple Silicon (M4)              |
+| Deployment Target | NVIDIA Jetson Nano              |
+
 
 ---
 
-## Results (Initial Model)
+## Results (Final Model single classification)
 
-| Metric | Score |
-|--------|-------|
-| **mAP@50** | **99.5%** |
-| **mAP@50-95** | **~85%** |
-| **Precision** | **100%** |
-| **Recall** | **97.8%** |
-| **F1 Score** | **1.00** |
+| Metric        | Score       |
+| ------------- | ----------- |
+| Precision     | 97.6%       |
+| Recall        | 97.9%       |
+| mAP@50        | 98.0%       |
+| mAP@50-95     | 93.6%       |
+| Best Epoch    | 61          |
+| Training Time | ~2.24 Hours |
 
-> Note: Results on initial 140-image subset. 
-> Final model training on full 1850-image dataset in progress.
-> <img width="533" height="232" alt="image" src="https://github.com/user-attachments/assets/3590b8c5-aaf4-41da-8188-74f0f44e0ba6" />
+
+The final model was trained after:
+
+Dataset : 1792 images
+duplicate removal,
+similarity-aware splitting,
+inclusion of negative/background samples,
+leakage-resistant evaluation.
+
+---
+
+## Explainable AI (XAI)
+
+To improve interpretability and scientific trustworthiness, CAM-based explainability analysis was integrated into the framework using EigenCAM / Grad-CAM.
+
+The explainability pipeline visualizes:
+
+fluorescence-sensitive regions,
+particle boundary attention,
+model activation behavior,
+regions influencing predictions.
+
+Activation maps demonstrated that the model primarily focuses on UV-fluorescent particle regions and structurally meaningful features instead of irrelevant background regions.
 
 ---
 
 ## Pipeline
-Hardware Setup
-↓
-Image Capture (UV fluorescence)
-↓
-Manual Annotation (Label Studio — OBB)
-↓
-Dataset Export (YOLOv8 OBB format)
-↓
-Train Rough Model (YOLOv8n-OBB)
-↓
-Auto-annotation of remaining images
-↓
-Verify + Clean dataset
-↓
-Train Final Model (YOLOv8m-OBB)
-↓
-Deploy on Jetson Nano
+Custom UV Optical Setup
+        ↓
+UV Fluorescence Image Capture
+        ↓
+Image Acquisition using Jetson Nano
+        ↓
+Manual Annotation (Label Studio - OBB)
+        ↓
+Dataset Cleaning & Similarity Analysis
+        ↓
+Leakage-Resistant Dataset Splitting
+        ↓
+YOLOv8n-OBB Training
+        ↓
+Explainability Analysis (EigenCAM)
+        ↓
+Edge Deployment on Jetson Nano
+        ↓
+Real-Time Microplastic Detection
+
+---
+## Current Status
+Completed
+
+✅ UV fluorescence imaging setup
+✅ Custom dataset creation
+✅ YOLOv8 OBB detection
+✅ Leakage-resistant evaluation
+✅ Explainable AI integration
+✅ Edge deployment pipeline
+
+In Progress
+
+🚧 Multi-class size classification (1mm–5mm)
+🚧 Automated particle size estimation
+🚧 Real-world environmental testing
+
+---
 
 ##  Paper
 
