@@ -35,15 +35,15 @@ The framework enables real-time localization of microplastic particles in contro
 
 ## Key Features
 
-✅ UV fluorescence-based microplastic visualization
-✅ Dye-free detection pipeline
-✅ Custom-built optical imaging chamber
-✅ YOLOv8 Oriented Bounding Box (OBB) detection
-✅ Explainable AI using EigenCAM / Grad-CAM
-✅ Leakage-resistant dataset engineering
-✅ Similarity-aware dataset splitting
-✅ Real-time inference on Jetson Nano
-✅ Low-cost and portable design
+>✅ UV fluorescence-based microplastic visualization
+>✅ Dye-free detection pipeline
+>✅ Custom-built optical imaging chamber
+>✅ YOLOv8 Oriented Bounding Box (OBB) detection
+>✅ Explainable AI using EigenCAM / Grad-CAM
+>✅ Leakage-resistant dataset engineering
+>✅ Similarity-aware dataset splitting
+>✅ Real-time inference on Jetson Nano
+>✅ Low-cost and portable design
 
 ---
 
@@ -115,25 +115,25 @@ Activation maps demonstrated that the model primarily focuses on UV-fluorescent 
 ---
 
 ## Pipeline
-Custom UV Optical Setup
-        ↓
-UV Fluorescence Image Capture
-        ↓
-Image Acquisition using Jetson Nano
-        ↓
-Manual Annotation (Label Studio - OBB)
-        ↓
-Dataset Cleaning & Similarity Analysis
-        ↓
-Leakage-Resistant Dataset Splitting
-        ↓
-YOLOv8n-OBB Training
-        ↓
-Explainability Analysis (EigenCAM)
-        ↓
-Edge Deployment on Jetson Nano
-        ↓
-Real-Time Microplastic Detection
+>Custom UV Optical Setup
+>       ↓
+>UV Fluorescence Image Capture
+>       ↓
+>Image Acquisition using Jetson Nano
+>      ↓
+>Manual Annotation (Label Studio - OBB)
+>       ↓
+>Dataset Cleaning & Similarity Analysis
+>       ↓
+>Leakage-Resistant Dataset Splitting
+>       ↓
+>YOLOv8n-OBB Training
+>       ↓
+>Explainability Analysis (EigenCAM)
+>       ↓
+>Edge Deployment on Jetson Nano
+>       ↓
+>Real-Time Microplastic Detection
 
 ---
 ## Current Status
