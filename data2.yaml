@@ -1,0 +1,10 @@
+train: dataset2/images/train
+val: dataset2/images/valid
+test: dataset2/images/test
+
+nc: 1
+
+names:
+  0: plastic
+
+  

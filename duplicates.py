@@ -6,13 +6,13 @@ import imagehash
 # -----------------------------
 # PATHS
 # -----------------------------
-TRAIN_PATH = "dataset/images/train"
-VAL_PATH = "dataset/images/valid"
-TEST_PATH = "dataset/images/test"
+TRAIN_PATH = "dataset2/images/train"
+VAL_PATH = "dataset2/images/valid"
+TEST_PATH = "dataset2/images/test"
 
 # Similarity threshold
 # Lower = stricter
-HASH_THRESHOLD = 2
+HASH_THRESHOLD = 1
 
 # -----------------------------
 # FUNCTION TO GET IMAGE HASH
