@@ -12,7 +12,7 @@ TEST_PATH = "dataset/images/test"
 
 # Similarity threshold
 # Lower = stricter
-HASH_THRESHOLD = 5
+HASH_THRESHOLD = 2
 
 # -----------------------------
 # FUNCTION TO GET IMAGE HASH
