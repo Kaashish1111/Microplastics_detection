@@ -20,7 +20,7 @@ HASH_THRESHOLD = 1
 
 TRAIN_RATIO = 0.7
 VALID_RATIO = 0.2
-TEST_RATIO  = 0.1
+TEST_RATIO = 0.1
 
 # =====================================================
 # CREATE OUTPUT FOLDERS
@@ -41,7 +41,7 @@ for split in splits:
     )
 
 # =====================================================
-# LOAD IMAGE FILES
+# LOAD IMAGES
 # =====================================================
 
 image_files = sorted([
@@ -49,13 +49,13 @@ image_files = sorted([
     if f.lower().endswith((".jpg", ".jpeg", ".png"))
 ])
 
-print(f"\nTotal images found: {len(image_files)}")
+print(f"\nTotal Images Found: {len(image_files)}")
 
 # =====================================================
 # COMPUTE HASHES
 # =====================================================
 
-print("\nComputing image hashes...")
+print("\nComputing hashes...")
 
 hashes = {}
 
@@ -67,15 +67,13 @@ for file in image_files:
 
         img = Image.open(path).convert("RGB")
 
-        h = imagehash.phash(img)
+        hashes[file] = imagehash.phash(img)
 
-        hashes[file] = h
+    except Exception as e:
 
-    except:
+        print(f"Error processing {file}: {e}")
 
-        print(f"Could not process: {file}")
-
-print("Hash computation completed!")
+print("Hashes computed!")
 
 # =====================================================
 # GROUP SIMILAR IMAGES
@@ -105,9 +103,7 @@ for file1 in image_files:
 
         hash2 = hashes[file2]
 
-        distance = hash1 - hash2
-
-        if distance <= HASH_THRESHOLD:
+        if (hash1 - hash2) <= HASH_THRESHOLD:
 
             group.append(file2)
 
@@ -115,7 +111,7 @@ for file1 in image_files:
 
     groups.append(group)
 
-print(f"\nTotal groups created: {len(groups)}")
+print(f"\nTotal Groups: {len(groups)}")
 
 # =====================================================
 # SPLIT GROUPS
@@ -139,15 +135,18 @@ test_groups = groups[valid_end:]
 
 def copy_group(group_list, split_name):
 
-    print(f"\nCopying {split_name} data...")
+    print(f"\nCopying {split_name} set...")
 
-    total = 0
+    count = 0
+    negatives = 0
 
     for group in group_list:
 
         for image_file in group:
 
-            # IMAGE PATHS
+            # ---------------------------------
+            # IMAGE
+            # ---------------------------------
 
             src_image = os.path.join(
                 IMAGE_DIR,
@@ -161,9 +160,11 @@ def copy_group(group_list, split_name):
                 image_file
             )
 
-            shutil.copy(src_image, dst_image)
+            shutil.copy2(src_image, dst_image)
 
-            # LABEL FILE
+            # ---------------------------------
+            # LABEL
+            # ---------------------------------
 
             label_file = os.path.splitext(image_file)[0] + ".txt"
 
@@ -179,13 +180,31 @@ def copy_group(group_list, split_name):
                 label_file
             )
 
+            # IMPORTANT:
+            # Preserve negatives too
+
             if os.path.exists(src_label):
 
-                shutil.copy(src_label, dst_label)
+                shutil.copy2(src_label, dst_label)
 
-            total += 1
+                # Count empty labels
+                if os.path.getsize(src_label) == 0:
 
-    return total
+                    negatives += 1
+
+            else:
+
+                # Create empty txt for negatives
+                open(dst_label, "w").close()
+
+                negatives += 1
+
+            count += 1
+
+    print(f"{split_name} images: {count}")
+    print(f"{split_name} negatives: {negatives}")
+
+    return count
 
 # =====================================================
 # COPY DATA
@@ -198,17 +217,15 @@ valid_count = copy_group(valid_groups, "valid")
 test_count = copy_group(test_groups, "test")
 
 # =====================================================
-# FINAL SUMMARY
+# SUMMARY
 # =====================================================
 
-print("\n====================================")
+print("\n===================================")
 print("SIMILARITY-AWARE SPLIT COMPLETED")
-print("====================================")
+print("===================================")
 
 print(f"Train Images : {train_count}")
 print(f"Valid Images : {valid_count}")
 print(f"Test Images  : {test_count}")
-
-print(f"\nTotal Groups : {len(groups)}")
 
 print("\nDataset ready!")
