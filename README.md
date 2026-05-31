@@ -79,14 +79,14 @@ The framework enables real-time localization of microplastic particles in contro
 
 ## Results (Final Model single classification)
 
-| Metric        | Score       |
-| ------------- | ----------- |
-| Precision     | 97.6%       |
-| Recall        | 97.9%       |
-| mAP@50        | 98.0%       |
-| mAP@50-95     | 93.6%       |
-| Best Epoch    | 61          |
-| Training Time | ~2.24 Hours |
+| Metric        | Score      |
+| ------------- | -----------|
+| Precision     | 97.7%      |
+| Recall        | 100%       |
+| mAP@50        | 99.1%      |
+| mAP@50-95     | 96.7%      |
+| Best Epoch    | 84         |
+| Training Time | ~2.44 Hours|
 
 
 The final model was trained after:
