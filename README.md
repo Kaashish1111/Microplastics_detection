@@ -152,12 +152,11 @@ A[Custom UV Optical Setup]
 - ✅ Leakage-resistant evaluation
 - ✅ Explainable AI integration
 - ✅ Edge deployment pipeline
+- ✅ Multi-class size classification (1mm–5mm)
 
 ---
 
 ## In Progress
-
-- 🚧 Multi-class size classification (1mm–5mm)
 - 🚧 Automated particle size estimation
 - 🚧 Real-world environmental testing
 
