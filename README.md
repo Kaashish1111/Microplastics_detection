@@ -20,6 +20,14 @@ The framework enables real-time localization of microplastic particles in contro
 
 ---
 
+##Contributers 
+Kashish
+Nadeem 
+Manik 
+Pahul 
+---
+
+
 ##  Hardware Setup
 
 | Component | Purpose |
